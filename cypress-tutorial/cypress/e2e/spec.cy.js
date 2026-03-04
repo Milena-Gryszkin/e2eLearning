@@ -19,7 +19,6 @@ cy.get('.action-email').type('fake@email.com')
 })
 describe('My second test', () => {
   it('Localhost', () => {
-cy.log('Visiting localhost')
     cy.visit('http://localhost:3000')
   })
   
