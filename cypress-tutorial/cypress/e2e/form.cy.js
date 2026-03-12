@@ -19,9 +19,4 @@ describe("Newsletter Subscribe Form", () => {
       );
     });
   });
-  context("Button", () => {
-    it.only("Course:Testing Your First Next.js Application", () => {
-      cy.getByData("course-0").find("a").eq(3).click();
-    });
-  });
 });
