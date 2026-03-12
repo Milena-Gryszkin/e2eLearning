@@ -1,24 +1,11 @@
 describe("User Journey", () => {
-  beforeEach(() => {
+  it("a user can find a course, complete all lessons, and finish the course", () => {
+    // Step 1: Find the course on the home page and navigate to it
     cy.visit("/");
-  });
-  it("Course: Testing Your First Next.js Application", () => {
     cy.getByData("course-0").find("a").contains("Get started").click();
     cy.location("pathname").should("equal", "/testing-your-first-application");
-  });
-});
-describe("User Journey 2", () => {
-  beforeEach(() => {
-    cy.visit("/");
-  });
-  it("a user can find a course on the home page and complete the courses lessons", () => {
-    cy.getByData("course-0").find("a").contains("Get started").click();
-    cy.location("pathname").should("equal", "/testing-your-first-application");
-  });
-});
-describe("User Journey 3", () => {
-  it("a user can start a course", () => {
-    cy.visit("/testing-your-first-application");
+
+    // Step 2: Start the course
     cy.getByData("next-lesson-button")
       .should("have.text", "Start Course")
       .click();
@@ -26,11 +13,8 @@ describe("User Journey 3", () => {
       "equal",
       "/testing-your-first-application/app-install-and-overview",
     );
-  });
-});
-describe("User Journey 4", () => {
-  it("a user can complete the first lesson and move to the next one", () => {
-    cy.visit("/testing-your-first-application/app-install-and-overview");
+
+    // Step 3: Complete the first lesson and move to the next one
     cy.getByData("multiple-choice-challenge").contains(
       "Vestibulum congue consectetur quam in mattis?",
     );
@@ -43,13 +27,8 @@ describe("User Journey 4", () => {
       "equal",
       "/testing-your-first-application/installing-cypress-and-writing-our-first-test",
     );
-  });
-});
-describe("User Journey 5", () => {
-  it("a user can complete the second lesson and move to the next one", () => {
-    cy.visit(
-      "/testing-your-first-application/installing-cypress-and-writing-our-first-test",
-    );
+
+    // Step 4: Complete the second lesson and move to the next one
     cy.getByData("multiple-choice-challenge").contains(
       "Vestibulum congue consectetur quam in mattis?",
     );
@@ -62,13 +41,8 @@ describe("User Journey 5", () => {
       "equal",
       "/testing-your-first-application/setting-up-data-before-each-test",
     );
-  });
-});
-describe("User Journey 6", () => {
-  it("a user can complete a course", () => {
-    cy.visit(
-      "/testing-your-first-application/setting-up-data-before-each-test",
-    );
+
+    // Step 5: Complete the final lesson and finish the course
     cy.getByData("multiple-choice-challenge").contains(
       "Vestibulum congue consectetur quam in mattis?",
     );
